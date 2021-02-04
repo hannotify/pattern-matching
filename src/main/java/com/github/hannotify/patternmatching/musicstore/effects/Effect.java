@@ -31,4 +31,8 @@ public abstract class Effect {
             volume(volumeBeforeMute);
         }
     }
+
+    int getVolume() {
+        return volume;
+    }
 }

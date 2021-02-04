@@ -21,6 +21,28 @@ class EffectLoopTest {
     }
 
     @Test
+    void testVolume() {
+        // Arrange
+        assertThat(effects.getVolume()).isEqualTo(10);
+
+        // Act
+        effects.volume(8);
+
+        // Assert
+        assertThat(effects.getVolume()).isEqualTo(8);
+    }
+
+    @Test
+    void testDefaultEffects() {
+        // Arrange
+        // Act
+        var defaultEffects = new EffectLoop("Basic effects");
+
+        // Assert
+        assertThat(defaultEffects.getEffects()).isEmpty();
+    }
+
+    @Test
     void testHasEffect() {
         // Arrange
         // Act

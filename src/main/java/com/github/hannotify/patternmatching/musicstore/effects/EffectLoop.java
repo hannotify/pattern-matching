@@ -54,4 +54,8 @@ public class EffectLoop extends Effect {
     public int hashCode() {
         return Objects.hash(name, effects);
     }
+
+    Set<Effect> getEffects() {
+        return effects;
+    }
 }
