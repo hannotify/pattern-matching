@@ -12,7 +12,7 @@ public class Delay extends Effect {
 
     @Override
     public String description() {
-        return String.format("Delay / time=%dms", timeInMs);
+        return String.format("Delay / timeInMs=%dms", timeInMs);
     }
 
     @Override
