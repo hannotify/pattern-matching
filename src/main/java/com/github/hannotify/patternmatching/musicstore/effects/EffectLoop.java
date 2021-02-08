@@ -27,6 +27,8 @@ public class EffectLoop extends Effect {
         return effects.contains(effect);
     }
 
+    public boolean isEmpty() { return effects.isEmpty(); };
+
     public EffectLoop volume(int volume) {
         super.volume(volume);
         return this;

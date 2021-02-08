@@ -40,4 +40,12 @@ public class Amplifier {
     public int hashCode() {
         return Objects.hash(name, stockEffects, auxEffects);
     }
+
+    EffectLoop getStockEffects() {
+        return stockEffects;
+    }
+
+    EffectLoop getAuxEffects() {
+        return auxEffects;
+    }
 }

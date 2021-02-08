@@ -21,6 +21,14 @@ class EffectLoopTest {
     }
 
     @Test
+    void testIsEmpty() {
+        // Arrange
+        // Act
+        // Assert
+        assertThat(effects.isEmpty()).isFalse();
+    }
+
+    @Test
     void testVolume() {
         // Arrange
         assertThat(effects.getVolume()).isEqualTo(10);
@@ -67,7 +75,7 @@ class EffectLoopTest {
     @Test
     void testDescription() {
         // Arrange
-        var expectedDescription = "EffectLoop / name=The Edge, effects=Delay / time=420ms, Delay / time=100ms, Overdrive / gain=8";
+        var expectedDescription = "EffectLoop / name=The Edge, effects=Delay / timeInMs=420ms, Delay / timeInMs=100ms, Overdrive / gain=8";
 
         // Act
         // Assert

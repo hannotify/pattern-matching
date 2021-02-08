@@ -32,7 +32,7 @@ public abstract class Effect {
         }
     }
 
-    int getVolume() {
+    public int getVolume() {
         return volume;
     }
 }
