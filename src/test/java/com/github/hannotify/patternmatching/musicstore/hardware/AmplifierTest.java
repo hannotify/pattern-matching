@@ -20,20 +20,18 @@ class AmplifierTest {
 
         assertThat(stockEffects).isNotNull();
         assertThat(stockEffects.isEmpty()).isFalse();
-        assertThat(stockEffects.getVolume()).isEqualTo(0);
 
         final EffectLoop auxEffects = bossKatana100.getAuxEffects();
 
         assertThat(auxEffects).isNotNull();
         assertThat(auxEffects.isEmpty()).isTrue();
-        assertThat(auxEffects.getVolume()).isEqualTo(0);
     }
 
     @Test
     void constructorSetsDefaultStockEffects() {
         // Arrange
-        var defaultDelay = new Delay(200).volume(0);
-        var defaultReverb = new Reverb("HallReverb", 100).volume(0);
+        var defaultDelay = new Delay(200);
+        var defaultReverb = new Reverb("HallReverb", 100);
 
         // Act
         var voxAc30 = new Amplifier("Vox AC30");

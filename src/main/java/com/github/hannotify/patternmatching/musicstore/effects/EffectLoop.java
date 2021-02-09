@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class EffectLoop extends Effect {
+public class EffectLoop implements Effect {
     private final String name;
     private final Set<Effect> effects;
 
@@ -14,7 +14,6 @@ public class EffectLoop extends Effect {
     }
 
     public EffectLoop(String name, Set<Effect> effects) {
-        super(10);
         this.name = name;
         this.effects = effects;
     }
@@ -27,12 +26,7 @@ public class EffectLoop extends Effect {
         return effects.contains(effect);
     }
 
-    public boolean isEmpty() { return effects.isEmpty(); };
-
-    public EffectLoop volume(int volume) {
-        super.volume(volume);
-        return this;
-    }
+    public boolean isEmpty() { return effects.isEmpty(); }
 
     @Override
     public String description() {
@@ -57,7 +51,7 @@ public class EffectLoop extends Effect {
         return Objects.hash(name, effects);
     }
 
-    Set<Effect> getEffects() {
+    public Set<Effect> getEffects() {
         return effects;
     }
 }

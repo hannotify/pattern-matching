@@ -2,12 +2,11 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Delay extends Effect {
-    private final int timeInMs;
+public class Delay implements Effect {
+    private int timeInMs;
 
     public Delay(int timeInMs) {
-        super(10);
-        this.timeInMs = timeInMs;
+        setTimeInMs(timeInMs);
     }
 
     @Override
@@ -28,5 +27,9 @@ public class Delay extends Effect {
     @Override
     public int hashCode() {
         return Objects.hash(timeInMs);
+    }
+
+    public void setTimeInMs(int timeInMs) {
+        this.timeInMs = timeInMs;
     }
 }

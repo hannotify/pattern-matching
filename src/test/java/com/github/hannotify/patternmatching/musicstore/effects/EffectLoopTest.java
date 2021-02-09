@@ -16,7 +16,7 @@ class EffectLoopTest {
         effects = new EffectLoop("The Edge", new HashSet<>(List.of(
                 new Overdrive(8),
                 new Delay(420),
-                new Delay(100).volume(4))
+                new Delay(100))
         ));
     }
 
@@ -26,18 +26,6 @@ class EffectLoopTest {
         // Act
         // Assert
         assertThat(effects.isEmpty()).isFalse();
-    }
-
-    @Test
-    void testVolume() {
-        // Arrange
-        assertThat(effects.getVolume()).isEqualTo(10);
-
-        // Act
-        effects.volume(8);
-
-        // Assert
-        assertThat(effects.getVolume()).isEqualTo(8);
     }
 
     @Test

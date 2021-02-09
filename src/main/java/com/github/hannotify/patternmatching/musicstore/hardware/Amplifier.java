@@ -4,8 +4,11 @@ import com.github.hannotify.patternmatching.musicstore.effects.Delay;
 import com.github.hannotify.patternmatching.musicstore.effects.Effect;
 import com.github.hannotify.patternmatching.musicstore.effects.EffectLoop;
 import com.github.hannotify.patternmatching.musicstore.effects.Reverb;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Amplifier {
     private String name;
@@ -15,9 +18,9 @@ public class Amplifier {
     public Amplifier(String name) {
         this.name = name;
         stockEffects = new EffectLoop("Stock effects",
-                Set.of(new Delay(200).volume(0), new Reverb("HallReverb", 100).volume(0))
-        ).volume(0);
-        auxEffects = new EffectLoop("Aux effects").volume(0);
+                Set.of(new Delay(200), new Reverb("HallReverb", 100))
+        );
+        auxEffects = new EffectLoop("Aux effects");
     }
 
     public void addEffect(Effect effect) {
@@ -47,5 +50,11 @@ public class Amplifier {
 
     EffectLoop getAuxEffects() {
         return auxEffects;
+    }
+
+    List<Effect> getEffectList() {
+        return List.of(stockEffects, auxEffects).stream()
+                .flatMap(e -> e.getEffects().stream())
+                .collect(Collectors.toList());
     }
 }

@@ -2,12 +2,11 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Tremolo extends Effect {
+public class Tremolo implements Effect {
     private final int depth;
     private final int rate;
 
     public Tremolo(int depth, int rate) {
-        super(10);
         this.depth = depth;
         this.rate = rate;
     }

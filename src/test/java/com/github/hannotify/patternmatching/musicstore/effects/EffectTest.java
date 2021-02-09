@@ -46,7 +46,7 @@ class EffectTest {
 
         // Assert
         assertThat(outContent.toString()).isEqualTo(
-                String.format("Effect applied - %s, volume=%d", octave.description(), octave.getVolume()));
+                String.format("Effect applied - %s%n", octave.description()));
 
         System.setOut(originalOut);
     }
@@ -64,43 +64,6 @@ class EffectTest {
             assertThat(tremolo.description()).isEqualTo("Tremolo / depth=2, rate=4ms");
             assertThat(tuner.description()).isEqualTo("Tuner / pitchInHz=440Hz");
         });
-    }
-
-    @Test
-    void volume() {
-        // Arrange
-        // Act
-        tremolo.volume(6);
-
-        // Arrange
-        assertThat(tremolo.getVolume()).isEqualTo(6);
-    }
-
-    @Test
-    void mute() {
-        // Arrange
-        assertThat(delay.getVolume()).isEqualTo(10);
-
-        // Act
-        delay.mute();
-
-        // Assert
-        assertThat(delay.getVolume()).isEqualTo(0);
-    }
-
-    @Test
-    void unmute() {
-        // Arrange
-        delay.volume(6);
-        assertThat(delay.getVolume()).isEqualTo(6);
-        delay.mute();
-        assertThat(delay.getVolume()).isEqualTo(0);
-
-        // Act
-        delay.unmute();
-
-        // Assert
-        assertThat(delay.getVolume()).isEqualTo(6);
     }
 
     @Test

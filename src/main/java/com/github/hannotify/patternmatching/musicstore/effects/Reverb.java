@@ -2,12 +2,11 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Reverb extends Effect {
-    private final String name;
-    private final int roomSize;
+public class Reverb implements Effect {
+    private String name;
+    private int roomSize;
 
     public Reverb(String name, int roomSize) {
-        super(10);
         this.name = name;
         this.roomSize = roomSize;
     }
@@ -30,6 +29,14 @@ public class Reverb extends Effect {
     @Override
     public int hashCode() {
         return Objects.hash(name, roomSize);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRoomSize(int roomSize) {
+        this.roomSize = roomSize;
     }
 }
 

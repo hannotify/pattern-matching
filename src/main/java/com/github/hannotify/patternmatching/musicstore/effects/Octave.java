@@ -2,12 +2,11 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Octave extends Effect {
+public class Octave implements Effect {
     private final Range range;
     private final int numberOfOctaves;
 
     public Octave(Range range, int numberOfOctaves) {
-        super(10);
         this.range = range;
         this.numberOfOctaves = numberOfOctaves;
     }

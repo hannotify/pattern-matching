@@ -16,12 +16,8 @@ public class Guitar {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Guitar)) {
-            return false;
-        }
-
-        Guitar other = (Guitar) o;
-        return name.equals(other.name) && guitarType == other.guitarType;
+        return (o instanceof Guitar other) &&
+                name.equals(other.name) && guitarType == other.guitarType;
     }
 
     @Override

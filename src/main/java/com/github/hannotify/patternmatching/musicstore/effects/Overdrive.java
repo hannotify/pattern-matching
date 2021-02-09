@@ -2,11 +2,10 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Overdrive extends Effect {
+public class Overdrive implements Effect {
     private final int gain;
 
     public Overdrive(int gain) {
-        super(10);
         this.gain = gain;
     }
 
