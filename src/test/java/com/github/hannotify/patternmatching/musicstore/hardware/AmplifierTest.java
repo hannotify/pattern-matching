@@ -4,6 +4,7 @@ import com.github.hannotify.patternmatching.musicstore.effects.Delay;
 import com.github.hannotify.patternmatching.musicstore.effects.EffectLoop;
 import com.github.hannotify.patternmatching.musicstore.effects.Reverb;
 import com.github.hannotify.patternmatching.musicstore.effects.Tremolo;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -67,5 +68,18 @@ class AmplifierTest {
         // Assert
         assertThat(marshallJtm45.getAuxEffects().hasEffect(tremolo)).isTrue();
         assertThat(marshallJtm45.getStockEffects().hasEffect(tremolo)).isFalse();
+    }
+
+    @Test
+    void getEffectList() {
+        // Arrange
+        var marshallJtm45 = new Amplifier("Marshall JTM-45 'Bluesbreaker'");
+
+        // Act
+        // Assert
+        assertThat(marshallJtm45.getEffectList()).contains(
+                new Delay(200),
+                new Reverb("HallReverb", 100)
+        );
     }
 }
