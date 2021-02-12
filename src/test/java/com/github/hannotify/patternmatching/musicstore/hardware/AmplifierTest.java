@@ -77,9 +77,24 @@ class AmplifierTest {
 
         // Act
         // Assert
-        assertThat(marshallJtm45.getEffectList()).contains(
+        var effectList = marshallJtm45.getEffectList();
+        assertThat(effectList).contains(
                 new Delay(200),
                 new Reverb("HallReverb", 100)
         );
+
+
+        effectList.forEach(e -> {
+            e.apply();
+
+            if (e instanceof Delay delay) {
+                delay.setTimeInMs(42);
+            } else if (e instanceof Reverb reverb) {
+                reverb.setName("StadiumReverb");
+                reverb.setRoomSize(47_500);
+            }
+
+            e.apply();
+        });
     }
 }
