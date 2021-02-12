@@ -2,7 +2,7 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Reverb implements Effect {
+public final class Reverb implements Effect {
     private String name;
     private int roomSize;
 

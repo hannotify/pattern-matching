@@ -5,17 +5,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class EffectLoop implements Effect {
-    private final String name;
-    private final Set<Effect> effects;
+public record EffectLoop(String name, Set<Effect> effects) implements Effect {
 
     public EffectLoop(String name) {
         this(name, new HashSet<>());
-    }
-
-    public EffectLoop(String name, Set<Effect> effects) {
-        this.name = name;
-        this.effects = effects;
     }
 
     public void addEffect(Effect effect) {
@@ -34,21 +27,6 @@ public class EffectLoop implements Effect {
                 effects.stream()
                     .map(Effect::description)
                     .collect(Collectors.joining(", ")));
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof EffectLoop)) {
-            return false;
-        }
-
-        EffectLoop other = (EffectLoop) o;
-        return Objects.equals(name, other.name) && Objects.equals(effects, other.effects);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, effects);
     }
 
     public Set<Effect> getEffects() {
