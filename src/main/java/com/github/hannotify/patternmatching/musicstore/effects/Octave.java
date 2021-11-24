@@ -31,6 +31,11 @@ public class Octave implements Effect {
         return Objects.hash(range, numberOfOctaves);
     }
 
+    @Override
+    public String toString() {
+        return description();
+    }
+
     public enum Range {
         BASSES,
         MIDS,

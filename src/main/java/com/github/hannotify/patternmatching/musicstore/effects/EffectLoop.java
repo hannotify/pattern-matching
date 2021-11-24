@@ -47,6 +47,11 @@ public class EffectLoop implements Effect {
     }
 
     @Override
+    public String toString() {
+        return description();
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(name, effects);
     }

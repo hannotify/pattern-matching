@@ -30,4 +30,17 @@ public class Tremolo implements Effect {
     public int hashCode() {
         return Objects.hash(depth, rate);
     }
+
+    @Override
+    public String toString() {
+        return description();
+    }
+
+    public int getDepth() {
+        return depth;
+    }
+
+    public int getRate() {
+        return rate;
+    }
 }

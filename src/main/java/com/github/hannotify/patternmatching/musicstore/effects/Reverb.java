@@ -31,12 +31,25 @@ public class Reverb implements Effect {
         return Objects.hash(name, roomSize);
     }
 
+    @Override
+    public String toString() {
+        return description();
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setRoomSize(int roomSize) {
         this.roomSize = roomSize;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getRoomSize() {
+        return roomSize;
     }
 }
 

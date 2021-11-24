@@ -29,7 +29,16 @@ public class Delay implements Effect {
         return Objects.hash(timeInMs);
     }
 
+    @Override
+    public String toString() {
+        return description();
+    }
+
     public void setTimeInMs(int timeInMs) {
         this.timeInMs = timeInMs;
+    }
+
+    public int getTimeInMs() {
+        return timeInMs;
     }
 }

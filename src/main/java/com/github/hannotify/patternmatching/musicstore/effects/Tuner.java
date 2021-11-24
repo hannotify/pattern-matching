@@ -33,4 +33,13 @@ public class Tuner implements Effect {
     public int hashCode() {
         return Objects.hash(pitchInHz);
     }
+
+    @Override
+    public String toString() {
+        return description();
+    }
+
+    public int getPitchInHz() {
+        return pitchInHz;
+    }
 }

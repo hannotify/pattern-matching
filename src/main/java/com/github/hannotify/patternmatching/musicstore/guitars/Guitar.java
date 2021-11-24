@@ -28,4 +28,9 @@ public class Guitar {
     public int hashCode() {
         return Objects.hash(name, guitarType);
     }
+
+    @Override
+    public String toString() {
+        return String.format("Guitar / %s", name);
+    }
 }

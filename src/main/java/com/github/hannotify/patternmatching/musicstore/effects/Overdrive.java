@@ -3,6 +3,7 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 import java.util.Objects;
 
 public class Overdrive implements Effect {
+
     private final int gain;
 
     public Overdrive(int gain) {
@@ -27,5 +28,14 @@ public class Overdrive implements Effect {
     @Override
     public int hashCode() {
         return Objects.hash(gain);
+    }
+
+    @Override
+    public String toString() {
+        return description();
+    }
+
+    public int getGain() {
+        return gain;
     }
 }
