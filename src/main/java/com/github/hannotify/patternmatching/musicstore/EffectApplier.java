@@ -14,7 +14,7 @@ public class EffectApplier {
             case Tremolo tr    -> String.format("Tremolo active with depth %d and rate %d.", tr.getDepth(), tr.getRate());
             case Tuner tu      -> String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
             case EffectLoop el -> el.getEffects().stream().map(e -> apply(e, guitar)).collect(Collectors.joining(System.lineSeparator()));
-            default            -> String.format("Unknown effect active: %s.", effect);
+            default            -> String.format("Unknown effect active.");
         };
     }
 }

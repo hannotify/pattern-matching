@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class EffectApplierTest {
 
     @ParameterizedTest
-    @MethodSource("provideEffects")
+    @MethodSource("provideKnownEffects")
     void testApplyForEffects(Effect effect, Guitar guitar, String expectedOutput) {
         assertThat(EffectApplier.apply(effect, guitar)).isEqualTo(expectedOutput);
     }
@@ -32,7 +32,7 @@ class EffectApplierTest {
         );
     }
 
-    private static Stream<Arguments> provideEffects() {
+    private static Stream<Arguments> provideKnownEffects() {
         var ibanez = provideGuitar();
 
         return Stream.of(
@@ -51,6 +51,34 @@ class EffectApplierTest {
                 Arguments.of(new Tuner(440),
                         ibanez,
                         "Tuner active with pitch 440. Muting all signal!")
+        );
+    }
+
+    private static Stream<Arguments> provideAllEffects() {
+        var ibanez = provideGuitar();
+
+        return Stream.of(
+                Arguments.of(new Delay(40),
+                        ibanez,
+                        "Delay active of 40 ms."),
+                Arguments.of(new Reverb("HallReverb", 30),
+                        ibanez,
+                        "Reverb active of type HallReverb and roomSize 30."),
+                Arguments.of(new Overdrive(5),
+                        ibanez,
+                        "Overdrive active with gain 5."),
+                Arguments.of(new Tremolo(8, 20),
+                        ibanez,
+                        "Tremolo active with depth 8 and rate 20."),
+                Arguments.of(new Tuner(440),
+                        ibanez,
+                        "Tuner active with pitch 440. Muting all signal!"),
+                Arguments.of(((Effect) () -> "Unknown effect"),
+                        ibanez,
+                        "Unknown or malfunctioning effect active."),
+                Arguments.of(null,
+                        ibanez,
+                        "Unknown or malfunctioning effect active.")
         );
     }
 
