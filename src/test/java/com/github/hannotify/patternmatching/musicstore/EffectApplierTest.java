@@ -4,6 +4,7 @@ import com.github.hannotify.patternmatching.musicstore.effects.*;
 import com.github.hannotify.patternmatching.musicstore.guitars.Guitar;
 import com.github.hannotify.patternmatching.musicstore.guitars.GuitarType;
 import com.github.hannotify.patternmatching.musicstore.hardware.Amplifier;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -18,7 +19,7 @@ class EffectApplierTest {
 
     @ParameterizedTest
     @MethodSource("provideKnownEffects")
-    void testApplyForEffects(Effect effect, Guitar guitar, String expectedOutput) {
+    void testApplyForKnownEffects(Effect effect, Guitar guitar, String expectedOutput) {
         assertThat(EffectApplier.apply(effect, guitar)).isEqualTo(expectedOutput);
     }
 
@@ -30,6 +31,22 @@ class EffectApplierTest {
                 "Delay active of 100 ms.",
                 "Reverb active of type StadiumReverb and roomSize 10000."
         );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideAllEffects")
+    void testApplyForAllEffects(Effect effect, Guitar guitar, String expectedOutput) {
+        assertThat(EffectApplier.apply(effect, guitar)).isEqualTo(expectedOutput);
+    }
+
+    @Test
+    void testApplyForGuardedPatterns() {
+        var ibanezOutOfTune = provideGuitar();
+        var ibanezInTune = provideGuitar().inTune();
+        var tuner = new Tuner(440);
+
+        assertThat(EffectApplier.apply(tuner, ibanezOutOfTune)).isEqualTo("Tuner active with pitch 440. Muting all signal!");
+        assertThat(EffectApplier.apply(tuner, ibanezInTune)).isEqualTo("");
     }
 
     private static Stream<Arguments> provideKnownEffects() {
@@ -83,6 +100,7 @@ class EffectApplierTest {
     }
 
     private static Guitar provideGuitar() {
-        return new Guitar("Ibanez AZ224F", GuitarType.STRATOCASTER, new Amplifier("BOSS Katana 100"));
+        // New Guitars are NEVER in tune. Trust me.
+        return new Guitar("Ibanez AZ224F", GuitarType.STRATOCASTER, new Amplifier("BOSS Katana 100")).outOfTune();
     }
 }

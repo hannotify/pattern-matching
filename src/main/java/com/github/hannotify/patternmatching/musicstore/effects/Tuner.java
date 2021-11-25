@@ -11,7 +11,7 @@ public class Tuner implements Effect {
     }
 
     public boolean isInTune(Guitar guitar) {
-        return true;
+        return guitar.isInTune();
     }
 
     @Override
