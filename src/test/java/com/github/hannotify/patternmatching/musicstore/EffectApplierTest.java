@@ -4,7 +4,6 @@ import com.github.hannotify.patternmatching.musicstore.effects.*;
 import com.github.hannotify.patternmatching.musicstore.guitars.Guitar;
 import com.github.hannotify.patternmatching.musicstore.guitars.GuitarType;
 import com.github.hannotify.patternmatching.musicstore.hardware.Amplifier;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -40,7 +39,7 @@ class EffectApplierTest {
     }
 
     @Test
-    void testApplyForGuardedPatterns() {
+    void testThatApplyPreventsUnnecessaryTuning() {
         var ibanezOutOfTune = provideGuitar();
         var ibanezInTune = provideGuitar().inTune();
         var tuner = new Tuner(440);
