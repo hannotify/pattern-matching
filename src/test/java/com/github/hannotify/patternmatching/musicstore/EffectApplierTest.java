@@ -4,6 +4,7 @@ import com.github.hannotify.patternmatching.musicstore.effects.*;
 import com.github.hannotify.patternmatching.musicstore.guitars.Guitar;
 import com.github.hannotify.patternmatching.musicstore.guitars.GuitarType;
 import com.github.hannotify.patternmatching.musicstore.hardware.Amplifier;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -18,11 +19,13 @@ class EffectApplierTest {
 
     @ParameterizedTest
     @MethodSource("provideKnownEffects")
+    @DisplayName("Known effects should return their description when applied.")
     void testApplyForKnownEffects(Effect effect, Guitar guitar, String expectedOutput) {
         assertThat(EffectApplier.apply(effect, guitar)).isEqualTo(expectedOutput);
     }
 
     @Test
+    @DisplayName("An effect loop should return descriptions of all containing effects when applied.")
     void testApplyForEffectLoop() {
         Effect effectLoop = new EffectLoop("StockLoop",
                 Set.of(new Delay(100), new Reverb("StadiumReverb", 10_000)));
@@ -34,11 +37,13 @@ class EffectApplierTest {
 
     @ParameterizedTest
     @MethodSource("provideAllEffects")
+    @DisplayName("Unknown or empty effects should return an error message when applied.")
     void testApplyForAllEffects(Effect effect, Guitar guitar, String expectedOutput) {
         assertThat(EffectApplier.apply(effect, guitar)).isEqualTo(expectedOutput);
     }
 
     @Test
+    @DisplayName("Only a guitar that is out of tune should require an active tuner.")
     void testThatApplyPreventsUnnecessaryTuning() {
         var ibanezOutOfTune = provideGuitar();
         var ibanezInTune = provideGuitar().inTune();
