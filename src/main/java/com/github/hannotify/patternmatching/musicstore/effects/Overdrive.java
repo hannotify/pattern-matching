@@ -2,7 +2,7 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Overdrive implements Effect {
+public final class Overdrive implements Effect {
 
     private final int gain;
 

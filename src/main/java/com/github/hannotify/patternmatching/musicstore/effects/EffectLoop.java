@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class EffectLoop implements Effect {
+public final class EffectLoop implements Effect {
     private final String name;
     private final Set<Effect> effects;
 

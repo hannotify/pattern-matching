@@ -2,7 +2,7 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Delay implements Effect {
+public final class Delay implements Effect {
     private int timeInMs;
 
     public Delay(int timeInMs) {

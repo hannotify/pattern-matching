@@ -2,7 +2,7 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 
 import java.util.Objects;
 
-public class Tremolo implements Effect {
+public final class Tremolo implements Effect {
     private final int depth;
     private final int rate;
 

@@ -3,7 +3,7 @@ package com.github.hannotify.patternmatching.musicstore.effects;
 import com.github.hannotify.patternmatching.musicstore.guitars.Guitar;
 import java.util.Objects;
 
-public class Tuner implements Effect {
+public final class Tuner implements Effect {
     private final int pitchInHz;
 
     public Tuner(int pitchInHz) {
