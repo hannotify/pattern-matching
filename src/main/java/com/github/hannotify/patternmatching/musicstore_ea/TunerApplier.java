@@ -21,17 +21,6 @@ public record Guitar(String name, GuitarType guitarType, boolean inTune) {}
 public record Note(String note) {}
 public record Tuner(int pitchInHz, Note note) {}
 
-public class TunerApplier {
-    static String apply(Tuner effect, Guitar guitar) {
-        return switch(effect) {
-            case Tuner tu when !guitar.inTune() -> String.format("Tuner active with pitch %d. Muting all signal!", tu.pitchInHz());
-            case Tuner tu when guitar.inTune() -> "No tuner active, because Guitar is in tune!";
-                default -> throw new IllegalStateException("Unexpected value: " + effect);
-        };
-    }
-}
-
-TunerApplier.apply(new Tuner(600, new Note("A")), new Guitar("Peter", GuitarType.WESTERN, true));
 
 // Deconstruction demo with Nesting
 
@@ -45,6 +34,6 @@ public class TunerApplier {
     }
 }
 
-TunerApplier.apply(new Tuner(600, new Note("A")), new Guitar("Peter", GuitarType.WESTERN, true));
+TunerApplier.apply(new Tuner(600, new Note("A")), new Guitar("Peter", GuitarType.WESTERN, false));
 
  */
