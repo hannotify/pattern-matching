@@ -15,6 +15,7 @@ public class EffectApplier {
             case Tuner tu      -> String.format("Tuner active with pitch %d. Muting all signal!", tu.getPitchInHz());
             case EffectLoop el -> el.getEffects().stream().map(e -> apply(e, guitar)).collect(Collectors.joining(System.lineSeparator()));
             case Octave octave -> "Octace active now";
+            default            -> "Unknown effect active.";
         };
     }
 }
