@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class TunerApplierTest {
 
     @Test
-    void testEffectApplier_outOfTune() {
+    void testEffectApplier_inTune() {
         String tunerResult = TunerApplier.apply(
                 new Tuner(600, new Note("A")),
                 new Guitar("Peter", GuitarType.WESTERN, true)
@@ -17,10 +17,10 @@ class TunerApplierTest {
     }
 
     @Test
-    void testEffectApplier_inTune() {
+    void testEffectApplier_outOfTune() {
         String tunerResult = TunerApplier.apply(
                 new Tuner(600, new Note("A")),
-                new Guitar("Peter", GuitarType.WESTERN, true)
+                new Guitar("Peter", GuitarType.WESTERN, false)
         );
 
         assertThat(tunerResult).isEqualTo("Tuner active with pitch 600 on Note A");
