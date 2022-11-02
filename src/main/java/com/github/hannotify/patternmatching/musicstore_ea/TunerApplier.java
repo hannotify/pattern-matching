@@ -5,8 +5,6 @@ public class TunerApplier {
         return switch(effect) {
             case Tuner tu when guitar.inTune() -> "No tuner active, because Guitar is in tune!";
 //            "Tuner active with pitch 600 on Note A"
-            case Tuner (int pitch, Note(String note))
-                    when !guitar.inTune() -> String.format("Tuner active with pitch %d on Note %s", pitch, note);
             default -> throw new IllegalStateException("Unexpected value: " + effect);
         };
     }
